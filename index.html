@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aliya Fathima | Aspiring SOC Analyst</title>
+  <meta name="description" content="Aliya Fathima — Cybersecurity graduate and aspiring SOC Analyst. Portfolio featuring skills in log analysis, network monitoring and incident response.">
+
+  <!-- Fonts: Orbitron (display / techy), Inter (body), JetBrains Mono (data / terminal) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ ANIMATED BACKGROUND CANVAS ============ -->
+  <canvas id="grid-canvas"></canvas>
+  <div class="noise-overlay"></div>
+
+  <!-- ============ SCROLL PROGRESS BAR ============ -->
+  <div class="scroll-progress"><div id="scroll-progress-bar"></div></div>
+
+  <!-- ============ NAVIGATION ============ -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="logo">
+        <span class="logo-bracket">&lt;</span>AF<span class="logo-bracket">/&gt;</span>
+      </a>
+
+      <nav class="nav-links" id="nav-links">
+        <a href="#home" class="nav-link active" data-section="home"><span class="nav-index">00</span>Home</a>
+        <a href="#about" class="nav-link" data-section="about"><span class="nav-index">01</span>About</a>
+        <a href="#skills" class="nav-link" data-section="skills"><span class="nav-index">02</span>Skills</a>
+        <a href="#experience" class="nav-link" data-section="experience"><span class="nav-index">03</span>Experience</a>
+        <a href="#projects" class="nav-link" data-section="projects"><span class="nav-index">04</span>Projects</a>
+        <a href="#education" class="nav-link" data-section="education"><span class="nav-index">05</span>Education</a>
+        <a href="#certification" class="nav-link" data-section="certification"><span class="nav-index">06</span>Certs</a>
+        <a href="#contact" class="nav-link" data-section="contact"><span class="nav-index">07</span>Contact</a>
+      </nav>
+
+      <a href="resume.pdf" download class="btn btn-nav-resume">
+        <i class="fa-solid fa-arrow-down-to-line"></i> Resume
+      </a>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ HERO / HOME ============ -->
+  <section id="home" class="hero">
+    <div class="hero-container">
+
+      <div class="hero-left reveal-up">
+        <p class="eyebrow"><span class="status-dot"></span>Available for SOC Analyst roles</p>
+        <h1 class="hero-name">Aliya Fathima</h1>
+        <h2 class="hero-title">
+          <span id="typing-text"></span><span class="cursor">_</span>
+        </h2>
+        <p class="hero-summary">
+          Motivated Cyber Forensics graduate seeking an entry-level SOC Analyst role, with hands-on
+          exposure to networking, log analysis, email security and incident response through
+          academic training and internships. Eager to learn, adapt, and contribute to security
+          monitoring and threat detection.
+        </p>
+
+        <div class="hero-actions">
+          <a href="resume.pdf" download class="btn btn-primary">
+            <i class="fa-solid fa-arrow-down-to-line"></i> Download Resume
+          </a>
+          <a href="#contact" class="btn btn-outline">
+            <i class="fa-regular fa-paper-plane"></i> Contact Me
+          </a>
+        </div>
+
+        <div class="hero-contacts">
+          <a href="mailto:aliyakb4@gmail.com" class="hero-contact-item">
+            <i class="fa-solid fa-envelope"></i> aliyakb4@gmail.com
+          </a>
+          <a href="tel:+918848647662" class="hero-contact-item">
+            <i class="fa-solid fa-phone"></i> +91 8848647662
+          </a>
+          <a href="https://linkedin.com/in/aliya-fathima-aa207b370" target="_blank" rel="noopener" class="hero-contact-item">
+            <i class="fa-brands fa-linkedin"></i> LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <!-- SIGNATURE ELEMENT: live SOC terminal feed -->
+      <div class="hero-right reveal-up" style="--delay:0.15s">
+        <div class="terminal-window">
+          <div class="terminal-bar">
+            <div class="terminal-dots"><span></span><span></span><span></span></div>
+            <span class="terminal-title">soc_monitor@aliya:~</span>
+            <span class="terminal-live"><i class="fa-solid fa-circle"></i> LIVE</span>
+          </div>
+          <div class="terminal-body" id="terminal-body">
+            <!-- Log lines injected by script.js -->
+          </div>
+        </div>
+        <div class="radar" aria-hidden="true">
+          <div class="radar-ring r1"></div>
+          <div class="radar-ring r2"></div>
+          <div class="radar-ring r3"></div>
+          <div class="radar-sweep"></div>
+        </div>
+      </div>
+    </div>
+
+    <a href="#about" class="scroll-cue" aria-label="Scroll to About section">
+      <span>Scroll</span>
+      <i class="fa-solid fa-chevron-down"></i>
+    </a>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="section">
+    <div class="section-inner">
+      <p class="section-eyebrow reveal-up">01 // Profile</p>
+      <h2 class="section-title reveal-up">About Me</h2>
+
+      <div class="about-grid">
+        <div class="about-text reveal-up">
+          <p>
+            I'm a Cyber Forensics graduate from Mahatma Gandhi University with a strong interest in
+            Security Operations. Through internships at an IT services firm and a Cyber Police
+            Station, I've built a foundational understanding of network monitoring, email security
+            policy, endpoint protection and digital forensics investigation workflows.
+          </p>
+          <p>
+            I enjoy the analytical side of security — reading logs, spotting anomalies, and
+            understanding how incidents unfold. I'm looking for an entry-level SOC Analyst position
+            where I can grow my technical skills while contributing to real-time threat monitoring
+            and incident response.
+          </p>
+
+          <div class="about-facts">
+            <div class="fact"><i class="fa-solid fa-location-dot"></i><div><span>Location</span><p>Kerala, India</p></div></div>
+            <div class="fact"><i class="fa-solid fa-graduation-cap"></i><div><span>Degree</span><p>BSc Cyber Forensics</p></div></div>
+            <div class="fact"><i class="fa-solid fa-shield-halved"></i><div><span>Focus</span><p>SOC / Threat Monitoring</p></div></div>
+            <div class="fact"><i class="fa-solid fa-bullseye"></i><div><span>Status</span><p>Open to Work</p></div></div>
+          </div>
+        </div>
+
+        <div class="about-card reveal-up" style="--delay:0.15s">
+          <div class="card-glow"></div>
+          <div class="id-card">
+            <div class="id-card-header">
+              <i class="fa-solid fa-shield-halved"></i>
+              <span>ANALYST CLEARANCE CARD</span>
+            </div>
+            <div class="id-card-row"><span>NAME</span><p>Aliya Fathima</p></div>
+            <div class="id-card-row"><span>ROLE</span><p>Aspiring SOC Analyst</p></div>
+            <div class="id-card-row"><span>CLEARANCE</span><p>Entry-Level / Trainee</p></div>
+            <div class="id-card-row"><span>BASE</span><p>Kerala, India</p></div>
+            <div class="id-card-barcode" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section id="skills" class="section section-alt">
+    <div class="section-inner">
+      <p class="section-eyebrow reveal-up">02 // Capabilities</p>
+      <h2 class="section-title reveal-up">Technical Skills</h2>
+
+      <div class="skills-grid">
+
+        <div class="skill-category reveal-up">
+          <h3><i class="fa-solid fa-network-wired"></i> Networking Fundamentals</h3>
+
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>Networking Fundamentals</span><span class="skill-percent" data-target="70">0%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="70"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>Linux (Basic)</span><span class="skill-percent" data-target="55">0%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="55"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>Command Prompt (Basic)</span><span class="skill-percent" data-target="60">0%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="60"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>Wireshark</span><span class="skill-percent" data-target="65">0%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="65"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>Nmap</span><span class="skill-percent" data-target="60">0%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="60"></div></div>
+          </div>
+        </div>
+
+        <div class="skill-category reveal-up" style="--delay:0.1s">
+          <h3><i class="fa-solid fa-magnifying-glass-chart"></i> Cybersecurity Fundamentals</h3>
+
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>Incident Response (Basic)</span><span class="skill-percent" data-target="55">0%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="55"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>Log Analysis &amp; Monitoring</span><span class="skill-percent" data-target="60">0%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="60"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>Email Security</span><span class="skill-percent" data-target="55">0%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="55"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>Endpoint Security Concepts</span><span class="skill-percent" data-target="50">0%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="50"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>Digital Forensics Fundamentals</span><span class="skill-percent" data-target="55">0%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="55"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="soft-skills reveal-up">
+        <h3><i class="fa-solid fa-brain"></i> Soft Skills</h3>
+        <div class="chip-row">
+          <span class="chip">Analytical Thinking</span>
+          <span class="chip">Problem Solving</span>
+          <span class="chip">Communication</span>
+          <span class="chip">Team Collaboration</span>
+          <span class="chip">Quick Learner</span>
+          <span class="chip">Attention to Detail</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section id="experience" class="section">
+    <div class="section-inner">
+      <p class="section-eyebrow reveal-up">03 // Field Log</p>
+      <h2 class="section-title reveal-up">Experience</h2>
+
+      <div class="timeline">
+        <div class="timeline-item reveal-up">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-date"><i class="fa-regular fa-clock"></i> May 2026 – June 2026</span>
+            <h3>IT Intern</h3>
+            <p class="timeline-org">Jobin &amp; Jismi IT Services</p>
+            <ul>
+              <li>Developed a basic understanding of networking, email security policies, and organizational security practices under the guidance of the IT Head.</li>
+              <li>Learned password management using Zoho Vault.</li>
+              <li>Learned endpoint security concepts using Sophos Endpoint Security.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal-up" style="--delay:0.15s">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-date"><i class="fa-regular fa-clock"></i> 2025</span>
+            <h3>Cybercrime Investigation Intern</h3>
+            <p class="timeline-org">Cyber Police Station</p>
+            <ul>
+              <li>Developed a basic understanding of cybercrime investigation procedures.</li>
+              <li>Learned digital forensics fundamentals.</li>
+              <li>Studied cybercrime reporting processes.</li>
+              <li>Learned about cybersecurity tools used during investigations.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects" class="section section-alt">
+    <div class="section-inner">
+      <p class="section-eyebrow reveal-up">04 // Deployments</p>
+      <h2 class="section-title reveal-up">Projects</h2>
+
+      <div class="projects-grid">
+        <article class="project-card reveal-up">
+          <div class="project-scanline"></div>
+          <div class="project-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+          <h3>AI Log Analyzer Tool</h3>
+          <p class="project-desc">
+            An AI-assisted log analysis concept built for SOC-style security monitoring workflows.
+          </p>
+          <ul class="project-points">
+            <li>Designed an AI-assisted log analysis concept for SOC-style monitoring.</li>
+            <li>Studied common log formats used in system and network monitoring.</li>
+            <li>Identified suspicious activity patterns within system logs.</li>
+          </ul>
+          <div class="project-tags">
+            <span class="chip chip-mono">Log Analysis</span>
+            <span class="chip chip-mono">SOC Concepts</span>
+            <span class="chip chip-mono">AI-Assisted</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal-up" style="--delay:0.15s">
+          <div class="project-scanline"></div>
+          <div class="project-icon"><i class="fa-solid fa-globe"></i></div>
+          <h3>World History Educational Website</h3>
+          <p class="project-desc">
+            A bilingual educational platform built to make world history content accessible and
+            well-structured for students.
+          </p>
+          <ul class="project-points">
+            <li>Developed a bilingual educational website using Python, HTML, and CSS.</li>
+            <li>Created a structured and user-friendly educational platform.</li>
+          </ul>
+          <div class="project-tags">
+            <span class="chip chip-mono">Python</span>
+            <span class="chip chip-mono">HTML</span>
+            <span class="chip chip-mono">CSS</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EDUCATION ============ -->
+  <section id="education" class="section">
+    <div class="section-inner">
+      <p class="section-eyebrow reveal-up">05 // Training Record</p>
+      <h2 class="section-title reveal-up">Education</h2>
+
+      <div class="edu-grid">
+        <div class="edu-card reveal-up">
+          <div class="edu-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+          <h3>Bachelor of Science (BSc) in Cyber Forensics</h3>
+          <p class="edu-org">Mahatma Gandhi University</p>
+          <span class="edu-date"><i class="fa-regular fa-calendar"></i> Graduated: May 2026</span>
+        </div>
+
+        <div class="edu-card reveal-up" style="--delay:0.15s">
+          <div class="edu-icon"><i class="fa-solid fa-certificate"></i></div>
+          <h3>Professional Diploma in Cybersecurity</h3>
+          <p class="edu-org">JB International Academy</p>
+          <span class="edu-date"><i class="fa-regular fa-calendar"></i> Completed</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CERTIFICATION ============ -->
+  <section id="certification" class="section section-alt">
+    <div class="section-inner">
+      <p class="section-eyebrow reveal-up">06 // Verified Credentials</p>
+      <h2 class="section-title reveal-up">Certification</h2>
+
+      <div class="cert-card reveal-up">
+        <div class="cert-badge"><i class="fa-solid fa-award"></i></div>
+        <div class="cert-info">
+          <h3>Professional Diploma in Cybersecurity</h3>
+          <p>JB International Academy</p>
+        </div>
+        <div class="cert-verify"><i class="fa-solid fa-circle-check"></i> Verified</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="section">
+    <div class="section-inner">
+      <p class="section-eyebrow reveal-up">07 // Open Channel</p>
+      <h2 class="section-title reveal-up">Contact</h2>
+      <p class="section-subtitle reveal-up">
+        Actively looking for entry-level SOC Analyst opportunities — feel free to reach out.
+      </p>
+
+      <div class="contact-grid">
+        <div class="contact-cards">
+          <a href="mailto:aliyakb4@gmail.com" class="contact-card reveal-up">
+            <div class="contact-card-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div><span>Email</span><p>aliyakb4@gmail.com</p></div>
+            <i class="fa-solid fa-arrow-up-right-from-square contact-arrow"></i>
+          </a>
+
+          <a href="tel:+918848647662" class="contact-card reveal-up" style="--delay:0.1s">
+            <div class="contact-card-icon"><i class="fa-solid fa-phone"></i></div>
+            <div><span>Phone</span><p>+91 8848647662</p></div>
+            <i class="fa-solid fa-arrow-up-right-from-square contact-arrow"></i>
+          </a>
+
+          <a href="https://linkedin.com/in/aliya-fathima-aa207b370" target="_blank" rel="noopener" class="contact-card reveal-up" style="--delay:0.2s">
+            <div class="contact-card-icon"><i class="fa-brands fa-linkedin"></i></div>
+            <div><span>LinkedIn</span><p>aliya-fathima-aa207b370</p></div>
+            <i class="fa-solid fa-arrow-up-right-from-square contact-arrow"></i>
+          </a>
+
+          <div class="contact-card contact-card-static reveal-up" style="--delay:0.3s">
+            <div class="contact-card-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div><span>Location</span><p>Kerala, India</p></div>
+          </div>
+        </div>
+
+        <form class="contact-form reveal-up" id="contact-form" style="--delay:0.15s">
+          <!--
+            Powered by Web3Forms (https://web3forms.com) — a free service that
+            delivers this form's submissions straight to your inbox with no
+            backend or database required. Get your own free access key at
+            web3forms.com (just enter your email, no signup/password needed)
+            and paste it into the value below, replacing the placeholder text.
+          -->
+          <input type="hidden" name="access_key" value="6f2478b5-0028-45eb-a4bf-18ac12d1a761">
+          <input type="hidden" name="subject" value="New portfolio contact — Aliya Fathima's site">
+          <input type="text" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
+          <div class="form-row">
+            <label for="cf-name">Name</label>
+            <input type="text" id="cf-name" name="name" placeholder="Your full name" required>
+          </div>
+          <div class="form-row">
+            <label for="cf-email">Email</label>
+            <input type="email" id="cf-email" name="email" placeholder="you@company.com" required>
+          </div>
+          <div class="form-row">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" rows="5" placeholder="Let's talk about an opportunity..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full" id="cf-submit">
+            <i class="fa-regular fa-paper-plane"></i> <span id="cf-submit-text">Send Message</span>
+          </button>
+          <p class="form-note" id="form-note">Delivered straight to Aliya's inbox — no email app required.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#home" class="logo"><span class="logo-bracket">&lt;</span>AF<span class="logo-bracket">/&gt;</span></a>
+        <p>Aspiring SOC Analyst | Cybersecurity Graduate</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="footer-socials">
+        <a href="mailto:aliyakb4@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        <a href="tel:+918848647662" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
+        <a href="https://linkedin.com/in/aliya-fathima-aa207b370" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="footer-year"></span> Aliya Fathima. All rights reserved.</p>
+      <p class="footer-tag">Built with HTML, CSS &amp; JavaScript</p>
+    </div>
+  </footer>
+
+  <!-- ============ BACK TO TOP ============ -->
+  <button id="back-to-top" aria-label="Back to top">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
